@@ -2,12 +2,15 @@
 
 int main (){
   int a;
+  int e=1;
   long long silnia = 1;
 
   std::cout << "podaj liczbe :" << '\n';
   std::cin>>a;
 
-  while(i=>a)
-  silnia*=i;
+  while(e<=a){
+    silnia=silnia*e;
+    e++;
+  }
   std::cout << silnia << "!" <<'\n';
 }

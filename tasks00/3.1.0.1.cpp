@@ -16,8 +16,7 @@ auto init(int a[], int n) -> void{
 	std::cout << "\n";
 }
 
-auto main() -> int{
-	int tab[100];
+auto main() -> int{\	int tab[100];
 	init(tab,get("Enter array size :"));
 	return 0;
 }

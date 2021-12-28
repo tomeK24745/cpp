@@ -1,28 +1,22 @@
 #include <iostream>
 #include <string>
 
+auto main() -> int {
+  int mnames = 0;
+  int fnames = 0;
+  std::string str[6];
 
-
-
-
-
-int main(){
-  std::string name1, name2;
-  int sll = 0;
-  int ell = 0;
-
-  std::cout << "type 1 name" << '\n';
-  std::cin >> name1;
-
-
-  if (name1.size() -1 =='a'){
-    1 =+ sll;
-  } else {
-    1 =+ ell;
+  for (auto i = 0; i < 5; i++) {
+    std::cout << "enter "<< i + 1 << " name" <<'\n';
+    std::cin >> str[i];
+    if (str[i].back() == 'a') {
+      fnames += 1;
+    } else {
+      mnames += 1;
+    }
   }
-
-  std::cout << "m:" << ell <<'\n';
-  std::cout << "z:" << sll <<'\n';
-
+  std::cout << '\n';
+  std::cout << "male names :" << mnames << '\n';
+  std::cout << "female names :" << fnames << '\n';
   return 0;
 }

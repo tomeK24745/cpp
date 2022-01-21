@@ -3,6 +3,12 @@
 #include <vector>
 #include <numeric>
 
+struct student {
+  std::string imie;
+  std::string nazwisko;
+  std::vector<int> oceny;
+}
+s1234 = {"Adam","Kowalski",{1,2,3,4,5}};
 
 
 auto average_of(std::vector<int> vec1 ) -> void {
@@ -15,12 +21,6 @@ auto average_of(std::vector<int> vec1 ) -> void {
 
 auto main() -> int {
   int input;
-  struct student {
-    std::string imie;
-    std::string nazwisko;
-    std::vector<int> oceny;
-  }
-  s1234 = {"Adam","Kowalski",{1,2,3,4,5}};
 
   std::cout << '\n';
   average_of(s1234.oceny);

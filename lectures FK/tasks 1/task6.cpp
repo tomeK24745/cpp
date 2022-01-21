@@ -1,16 +1,16 @@
 #include <iostream>
 
-auto is_even(bool result) -> bool {
-
-  if (result == true) {
+auto is_divisible(int number,int divider) -> bool {
+  if (number % divider == 0) {
     return true;
   } else {
     return false;
   }
 }
 
-auto is_divisible(int number,int divider) -> bool {
-  if (number % divider == 0) {
+auto is_even(int number,int divider) -> bool {
+  bool result = is_divisible(number, divider);
+  if (result == true) {
     return true;
   } else {
     return false;
@@ -24,6 +24,6 @@ auto is_divisible(int number,int divider) -> bool {
     std::cin >> a;
     std::cout << "enter divider" << '\n';
     std::cin >> b;
-    std::cout << "result : " << is_even(is_divisible(a,b)) << '\n';
+    std::cout << "result : " << is_even(a,b) << '\n';
     return 0;
   }

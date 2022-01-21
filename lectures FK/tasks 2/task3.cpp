@@ -17,8 +17,8 @@ auto main() -> int {
   auto vec2 = std::vector<int> (0) ;
   int input;
 
-  for (auto i = 0; i < 5; i++) {
-    std::cout << "enter "<< i + 1 << " number for" << " 1 " << "vector" <<'\n';
+  for (auto i = 0; i < 2; i++) {
+    std::cout << "enter "<< "a" << i + 1 << " for" << " 1 " << "vector" <<'\n';
     std::cin >> input;
     vec1.push_back(input);
   }
@@ -27,8 +27,8 @@ auto main() -> int {
   std::cout << "enter next vector" << '\n';
   std::cout <<'\n';
 
-  for (auto j = 0; j < 5; j++) {
-    std::cout << "enter "<< j + 1 << " number for" << " 2 " << "vector" <<'\n';
+  for (auto j = 0; j < 2; j++) {
+    std::cout << "enter "<< "b" << j + 1 << " for" << " 2 " << "vector" <<'\n';
     std::cin >> input;
     vec2.push_back(input);
   }

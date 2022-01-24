@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 #include <numeric>
-#include <fstream> //files
-#include <cstdlib> //random
-#include <ctime> // time
+#include <fstream>
+#include <cstdlib>
+//#include <ctime> // time
 
 //------------------------------------------------------
 
@@ -45,25 +45,20 @@ auto random_password() -> std::string {
   for (int i = 1; i <= LINE; i++)
           std::getline(f, s);
 
-  //std::cout << '\n';
-  //std::cout << s << '\n';
-  //std::cout << "random :" << '\n';
-  //std::cout << random_number() << '\n';
   return s;
 }
 
 //------------------------------------------------------
 
 auto win_game () -> void {
+
   std::cout << '\n';
   std::cout << '\n';
-  std::cout << "33 You Won 33" << '\n';
+  std::cout << "You Won" << '\n';
+
+
   exit(0);
 }
-
-//------------------------------------------------------
-
-
 
 //------------------------------------------------------
 
@@ -71,7 +66,7 @@ auto display_hangmman_life (int life) -> void {
 
 
   if (life == 5) {
-    //std::cout << "[     ]" << '\n';
+
     std::cout << "                                     HH    " << '\n';
     std::cout << "                                    HH     " << '\n';
     std::cout << "                                   HH      " << '\n';
@@ -142,7 +137,7 @@ auto display_hangmman_life (int life) -> void {
     std::cout << "                               HHH         " << '\n';
 
   } else if (life == 4) {
-    //std::cout << "[x    ]" << '\n';
+
     std::cout << "                                     HH    " << '\n';
     std::cout << "                                    HH     " << '\n';
     std::cout << "                                   HH      " << '\n';
@@ -212,7 +207,7 @@ auto display_hangmman_life (int life) -> void {
     std::cout << "                           HHHHHH          " << '\n';
     std::cout << "                               HHH         " << '\n';
   } else if (life == 3) {
-    //std::cout << "[xx   ]" << '\n';
+
 std::cout << "                                     HH    " << '\n';
 std::cout << "                                    HH     " << '\n';
 std::cout << "                                   HH      " << '\n';
@@ -282,7 +277,7 @@ std::cout << "                         HHHHH             " << '\n';
 std::cout << "                           HHHHHH          " << '\n';
 std::cout << "                               HHH         " << '\n';
   } else if (life == 2) {
-    //std::cout << "[xxx  ]" << '\n';
+
     std::cout << "                                     HH    " << '\n';
 std::cout << "                                    HH     " << '\n';
 std::cout << "                                   HH      " << '\n';
@@ -352,7 +347,7 @@ std::cout << "                         HHHHH             " << '\n';
 std::cout << "                           HHHHHH          " << '\n';
 std::cout << "                               HHH         " << '\n';
   } else if (life == 1) {
-    //std::cout << "[xxxx ]" << '\n';
+
     std::cout << "                                     HH    " << '\n';
 std::cout << "                                    HH     " << '\n';
 std::cout << "                                   HH      " << '\n';
@@ -422,7 +417,7 @@ std::cout << "                         HHHHH             " << '\n';
 std::cout << "                           HHHHHH          " << '\n';
 std::cout << "                               HHH         " << '\n';
   } else if (life == 0) {
-    //std::cout << "[xxxxx]" << '\n';
+
     std::cout << "                                     HH    " << '\n';
 std::cout << "                                    HH     " << '\n';
 std::cout << "                                   HH      " << '\n';
@@ -495,12 +490,12 @@ std::cout << '\n';
     std::cout << "     G  A   ME    OV   E R" << '\n';
   }
 
-
 }
 
 //------------------------------------------------------
-// hasło
-auto check_normal_win(std::string hiden_password, std::string entered_chars) -> bool { 
+
+auto check_normal_win(std::string hiden_password, std::string entered_chars) -> bool {
+
   bool status = true;
 
   for (size_t o = 0; o < hiden_password.size(); o++) {
@@ -516,6 +511,7 @@ auto check_normal_win(std::string hiden_password, std::string entered_chars) -> 
 }
 
 //------------------------------------------------------
+
 auto check_instant_win(std::string password, std::string entered_chars) -> bool {
 
   bool status = true;
@@ -529,6 +525,7 @@ auto check_instant_win(std::string password, std::string entered_chars) -> bool 
     return false;
   }
 }
+
 //------------------------------------------------------
 
 auto display_guessing_status(std::string password, std::string entered_chars) -> std::string {
@@ -543,7 +540,6 @@ auto display_guessing_status(std::string password, std::string entered_chars) ->
   }
             for (size_t i = 0; i < password.size(); i++) {
                 for (size_t j = 0; j < entered_chars.size(); j++) {
-                      //input = entered_chars[j];
                       if (password[i] == entered_chars[j]) {
                   hiden_password[i] = password[i];
                   }
@@ -555,6 +551,7 @@ auto display_guessing_status(std::string password, std::string entered_chars) ->
 //------------------------------------------------------
 
 auto check(std::string password, std::string entered_chars) -> bool {
+
   bool guessed = false;
 
   for (size_t i = 0; i < password.size(); i++) {
@@ -565,24 +562,26 @@ auto check(std::string password, std::string entered_chars) -> bool {
       }
     }
 
-  return guessed;
+  if (guessed == true) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 //------------------------------------------------------
-
 
 auto main() -> int {
 
 int life = 5;
 bool live_flag = false;
 bool win = false;
-bool check = false;
+bool check_chars = false;
 const std::string password = random_password();
 std::string hiden_password;
 std::string input;
 std::string entered_chars;
 std::string entered_password;
-//auto entered_chars = std::vector<std::string> (0) ;
 char input_char;
 
 
@@ -590,55 +589,14 @@ display_hangmman_life (life);
 hiden_password = display_guessing_status(password, entered_chars);
 std::cout << hiden_password << '\n';
 
+//--------------------------------
 
-//---------------------------------1 pytanie
+while (life >= 1 || win == true) {
 
-  std::cout << "enter char" << '\n';
+  std::cout << "enter char0" << '\n';
   getline(std::cin, input);
 
-  if (input.size() == 1 ) { // jeden znak
-    //####################################
-    entered_chars = input[0];
-    //entered_chars.push_back(input);
-    //####################################
-    hiden_password = display_guessing_status(password, entered_chars);
-    win = check_normal_win(hiden_password, entered_chars);
-
-        check = (password, hiden_password);
-
-     display_hangmman_life (life);
-    std::cout << '\n';
-    std::cout << "password : " << hiden_password << '\n';
-    std::cout << "life : " << life << '\n';
-
-  } else if (input.size() > 1 ){ // wiele znaków
-    win = check_instant_win(password, input);
-
-    display_hangmman_life (life);
-   std::cout << '\n';
-    std::cout << "password : " << hiden_password << '\n';
-    std::cout << "life : " << life << '\n';
-  }
-
-
-  if (win == false){
-    life-- ;
-  } else if (win == true){
-    win_game();
-  }
-
-
-
-
-
-//---------------------------------każde kolejne pytanie
-
-while (life >= 0 || win == true ) {
-
-  std::cout << "enter char" << '\n';
-  //std::cin >> entered_chars;
-  getline(std::cin, input);
-  if (input.size() == 1 ) { // jeden znak
+  if (input.size() == 1 ) {
     //####################################
     input_char = input[0];
 
@@ -646,13 +604,19 @@ while (life >= 0 || win == true ) {
     //####################################
     hiden_password = display_guessing_status(password, entered_chars);
     win = check_normal_win(hiden_password, entered_chars);
+    check_chars = check(password, entered_chars);
 
-    display_hangmman_life (life);
-   std::cout << '\n';
+    if (win == false){
+      life-- ;
+    }
+
+
+     display_hangmman_life (life);
+    std::cout << '\n';
     std::cout << "password : " << hiden_password << '\n';
     std::cout << "life : " << life << '\n';
 
-  } else if (input.size() > 1 ){ // wiele znaków
+  } else if (input.size() > 1 ){
     win = check_instant_win(password, input);
 
     display_hangmman_life (life);
@@ -661,14 +625,13 @@ while (life >= 0 || win == true ) {
     std::cout << "life : " << life << '\n';
   }
 
-  if (win == false){
-    life-- ;
-  } else if (win == true){
+
+  if (win == true){
+    std::cout << '\n';
+    std::cout << "password :" << password << '\n';
     win_game();
   }
 }
 
 return 0;
-
-
 }

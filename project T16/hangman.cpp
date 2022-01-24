@@ -500,8 +500,7 @@ std::cout << '\n';
 
 //------------------------------------------------------
 // hasło
-auto check_normal_win(std::string hiden_password, std::string entered_chars) -> bool { //sprawdza czy przypadkiem ktoś nie wygrał
-
+auto check_normal_win(std::string hiden_password, std::string entered_chars) -> bool { 
   bool status = true;
 
   for (size_t o = 0; o < hiden_password.size(); o++) {
@@ -517,7 +516,7 @@ auto check_normal_win(std::string hiden_password, std::string entered_chars) -> 
 }
 
 //------------------------------------------------------
-auto check_instant_win(std::string password, std::string entered_chars) -> bool { //sprawdza czy słowo wygrało
+auto check_instant_win(std::string password, std::string entered_chars) -> bool {
 
   bool status = true;
 
@@ -577,6 +576,7 @@ auto main() -> int {
 int life = 5;
 bool live_flag = false;
 bool win = false;
+bool check = false;
 const std::string password = random_password();
 std::string hiden_password;
 std::string input;
@@ -587,8 +587,9 @@ char input_char;
 
 
 display_hangmman_life (life);
-hiden_password = display_guessing_status(password, entered_chars); //naprawić pentle bo coś sie jebe, sprawdzić cout gdzie to sie jebe, dodać obrazki
+hiden_password = display_guessing_status(password, entered_chars);
 std::cout << hiden_password << '\n';
+
 
 //---------------------------------1 pytanie
 
@@ -602,6 +603,8 @@ std::cout << hiden_password << '\n';
     //####################################
     hiden_password = display_guessing_status(password, entered_chars);
     win = check_normal_win(hiden_password, entered_chars);
+
+        check = (password, hiden_password);
 
      display_hangmman_life (life);
     std::cout << '\n';
@@ -623,6 +626,8 @@ std::cout << hiden_password << '\n';
   } else if (win == true){
     win_game();
   }
+
+
 
 
 
@@ -666,7 +671,4 @@ while (life >= 0 || win == true ) {
 return 0;
 
 
-} //dodać clean
-// zrobić pożądek ze zmiennymi i tak dalej
-//naprawić odejmowanie życia przy poprawnej odpowiedzi
-//dwie części main sprawdzić :)
+}
